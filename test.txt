@@ -1,0 +1,4 @@
+bower check-new     Checking for new versions of the project dependencies..
+wetlands-map2 /Applications/MAMP/htdocs/wetlands-map2
+└─┬ bootstrap#3.2.0 (latest is 3.3.4)
+  └── jquery#2.1.4
