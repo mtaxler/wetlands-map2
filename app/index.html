@@ -10,6 +10,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
@@ -22,7 +23,7 @@
     <!-- endbuild -->
   </head>
   <body>
-
+    
      <div id="sidebar" class="sidebar collapsed">
         <!-- Nav tabs -->
         <ul class="sidebar-tabs" role="tablist">
@@ -35,30 +36,48 @@
             <li data-toggle="tooltip" data-placement="right" data-original-title="Query wetlands"><a data-tab="#search" role="tab" class="map-control"><i class="fa fa-search"></i></a></li>
             <li data-toggle="tooltip" data-placement="right" data-original-title="Function weighting"><a data-tab="#weighting" role="tab" class="map-control"><i class="fa fa-sliders"></i></a></li>
             <li data-toggle="tooltip" data-placement="right" data-original-title="Toggle map layers"><a data-tab="#layers" role="tab" class="map-control"><i class="fa fa-database"></i></a></li>
-            <li><a data-tab="#print" role="tab" class="map-control"><i class="fa fa-print fa-color-controls"></i></a></li>
+            <li class="hidden-sm hidden-xs"><a data-tab="#print" role="tab" class="map-control"><i class="fa fa-print fa-color-controls"></i></a></li>
             <li data-toggle="tooltip" data-placement="right" data-original-title="Share"><a data-tab="#share" role="tab" class="map-control"><i class="fa fa-share"></i></a></li>
         </ul>
-
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                    ...Llaskfj;alskdfj;laskdfj;alskfdj;alskdfj;alskdfj;alskdfj;alskfj;alskdfj;alskfdj;alskfdj
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Tab panes -->
         <div class="sidebar-content active">
             <div class="sidebar-pane" id="home">
                 <h1>WAFWA</h1>
 
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p>Bacon ipsum dolor amet non filet mignon flank cillum, spare ribs culpa turducken id ball tip pork belly kevin. Ribeye porchetta veniam turducken ea dolore. Ut proident venison mollit aliqua, chuck duis lorem cow laborum est commodo ham hock. Duis pork belly flank, fugiat beef laboris officia in t-bone corned beef turducken shoulder. Cow frankfurter occaecat aute et do boudin venison short ribs.</p>
+                <p>Adipisicing nostrud andouille, pastrami consequat cow capicola shankle nisi sed kielbasa boudin jowl sirloin tenderloin. Pork loin alcatra dolore beef ribs. Turducken ipsum laboris veniam tail beef. Jowl shankle turkey dolore, anim flank cillum. Picanha eiusmod voluptate tongue porchetta brisket anim venison corned beef flank adipisicing do andouille pork laborum. Tri-tip pancetta voluptate beef ribs reprehenderit commodo.</p>
+                <p>Hamburger cupidatat short ribs pork loin sint. Consequat jerky jowl cow laboris venison, rump pariatur deserunt. Sirloin capicola nulla rump landjaeger doner ut filet mignon boudin irure enim turducken leberkas proident swine. Est meatloaf labore, cupim id anim pork magna. Sunt alcatra porchetta venison sint swine velit pariatur aute. Pork belly strip steak sausage, ut t-bone biltong chicken. In turkey dolore swine.</p>
             </div>
             <div class="sidebar-pane" id="search"><h1>Query</h1></div>
             <div class="sidebar-pane" id="weighting"><h1>Assign Weights</h1></div>
-            <div class="sidebar-pane" id="layers"><h1>Layers</h1>
-                <ul>
+            <div class="sidebar-pane" id="layers">
+                <h1>Layers</h1>
+                <div class="layer-item">
+                    <!-- <input id="huc12s" type="checkbox" checked data-toggle="toggle" data-size="mini">     -->
+                    <input id="huc12s" type="checkbox" checked>Huc 12 Boundaries  
+                </div>
+                
+                <!-- <ul>
                     <li class="active walleye"><a id="walleyeToggle">Walleye</a></li>
                     <li class="active huc12s"><a id="huc12sToggle">HUC 12s</a></li>
-                </ul>
+                </ul> -->
             </div>
             <div class="sidebar-pane" id="share"><h1>Share</h1></div>
         </div>
@@ -69,6 +88,7 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -83,19 +103,7 @@
     </script> -->
         <!-- build:js(.) scripts/plugins.js -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <!-- <script src="bower_components/bootstrap/js/affix.js"></script>
-        <script src="bower_components/bootstrap/js/alert.js"></script>
-        <script src="bower_components/bootstrap/js/dropdown.js"></script>
-        <script src="bower_components/bootstrap/js/tooltip.js"></script>
-        <script src="bower_components/bootstrap/js/modal.js"></script>
-        <script src="bower_components/bootstrap/js/transition.js"></script>
-        <script src="bower_components/bootstrap/js/button.js"></script>
-        <script src="bower_components/bootstrap/js/popover.js"></script>
-        <script src="bower_components/bootstrap/js/carousel.js"></script>
-        <script src="bower_components/bootstrap/js/scrollspy.js"></script>
-        <script src="bower_components/bootstrap/js/collapse.js"></script>
-        <script src="bower_components/bootstrap/js/tab.js"></script> -->
-        <!-- endbuild -->
+       
         <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
         <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/1.0.0-rc.6/esri-leaflet.js"></script>
         

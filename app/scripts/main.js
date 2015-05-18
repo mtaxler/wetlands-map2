@@ -1,5 +1,6 @@
 "use strict";
 $( document ).ready(function() {
+
 	$('[data-toggle="tooltip"]').tooltip();
 
 	var map = L.map('map',{zoomControl:false}).setView([43.0667, -89.4000], 13);
@@ -22,6 +23,12 @@ $( document ).ready(function() {
 		});
 		sidebar.close();
 	});
+
+	$('#print').click(function(){
+		$("#map").print({stylesheet:"styles/print.css"})
+	});
+
+
 	
 	// add an OpenStreetMap tile layer
 	// L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -40,7 +47,7 @@ $( document ).ready(function() {
 	//       e.stopPropagation();
 	//     }
 	// });
-	var walleyeWaters = L.esri.featureLayer('http://dnrmaps.wi.gov/arcgis/rest/services/WT_SWDV/WT_Fisheries_Waters_WTM_Ext/MapServer/7',{simplifyFactor:0.35}).addTo(map);
+	// var walleyeWaters = L.esri.featureLayer('http://dnrmaps.wi.gov/arcgis/rest/services/WT_SWDV/WT_Fisheries_Waters_WTM_Ext/MapServer/7',{simplifyFactor:0.35}).addTo(map);
 	var huc12s = L.esri.featureLayer('http://dnrmaps.wi.gov/arcgis/rest/services/WT_SWDV/WT_Federal_Hydrologic_Units_WTM_Ext/MapServer/0',{
 		simplifyFactor:0.1,
 		style: function(feature){
@@ -56,10 +63,10 @@ $( document ).ready(function() {
 	 
 	// omnivore.topojson('js/rivers_topo.json').addTo(map);
 	var allLayers = {
-		'Walleye Waters': [walleyeWaters, '#walleyeToggle','.walleye'],
+		// 'Walleye Waters': [walleyeWaters, '#walleyeToggle','.walleye'],
 		'HUC 12 Boundaries': [huc12s, '#huc12sToggle','.huc12s']
 	};
-	
+
 	var baselayers = {
 		'OpenStreetMap': L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
@@ -91,26 +98,51 @@ $( document ).ready(function() {
 
 	baselayers.OpenStreetMap.addTo(map);
 
-	function buildLegend(layerSet){
+	// function buildLegend(layerSet){
 
-		$.each(layerSet, function(key, value) {
-			var mapLayer = value[0];
-			var layerId = value[1];
-			var layerClass = value[2];
+	// 	$.each(layerSet, function(key, value) {
+	// 		var mapLayer = value[0];
+	// 		var layerId = value[1];
+	// 		var layerClass = value[2];
 
-			$(layerId).click(function(){
-				if (map.hasLayer(mapLayer)){
-		    		map.removeLayer(mapLayer);
-		    		$(layerClass).removeClass("active");
-		    	} else {
-		    		mapLayer.addTo(map);
-		    		$(layerClass).addClass("active");
-		    	}
-			});
+	// 		$(layerId).click(function(){
+	// 			if (map.hasLayer(mapLayer)){
+	// 	    		map.removeLayer(mapLayer);
+	// 	    		$(layerClass).removeClass("active");
+	// 	    	} else {
+	// 	    		mapLayer.addTo(map);
+	// 	    		$(layerClass).addClass("active");
+	// 	    	}
+	// 		});
 		       
+	// 	});
+	// }
+	// buildLegend(allLayers);
+
+	$('#huc12s').click(function(){	
+		console.log($('#huc12s').is(':checked'));
+
+		if($('#huc12s').is(':checked')){
+			map.addLayer(huc12s);
+		} else {
+			map.removeLayer(huc12s);
+		}
+	});
+	
+
+	huc12s.on('click',function(feature,layer){
+		var item = feature.layer.feature.properties;
+		var modalHTML = '';
+		$.each(item, function(itemName,itemValue){
+			modalHTML += '<p><strong>' + itemName + ': </strong>' + itemValue + '</p>';
 		});
-	}
-	buildLegend(allLayers);
+
+		var title = item.HUC12_NAME;
+		$('#featureTitle').html(title);
+		$('#featureBody').html(modalHTML);
+		
+		$("#myModal").modal('show');
+	});
 
 	// $('#walleyeToggle').click(function(){
 	// 	if (map.hasLayer(walleyeWaters)){
@@ -122,6 +154,13 @@ $( document ).ready(function() {
 	// 	}
 		
 	// });
-
+	
+	
+	// $('#huc12s').click(function(){
+		
+	// 	$('#huc12s').printElement();
+	// });
 });
+
+
 

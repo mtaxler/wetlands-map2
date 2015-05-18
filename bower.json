@@ -1,7 +1,21 @@
 {
   "name": "wetlands-map2",
-  "private": true,
   "dependencies": {
-    "bootstrap": "~3.2.0"
-  }
+    "bootstrap": "~3.2.0",
+    "bootstrap-toggle": "~2.2.0"
+  },
+  "version": "0.0.1",
+  "homepage": "https://github.com/mtaxler/wetlands-map2",
+  "authors": [
+    "Matthew Axler <matthew.axler@gmail.com>"
+  ],
+  "description": "Scaffold for web map",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
